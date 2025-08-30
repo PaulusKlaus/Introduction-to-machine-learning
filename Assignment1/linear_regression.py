@@ -22,6 +22,7 @@ class LinearRegression():
 
     def update_parameters(self, grad_w, grad_b):
 
+
     def accuracy(true_values, predictions):
         return np.mean(true_values == predictions)
 
