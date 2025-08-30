@@ -29,8 +29,11 @@ class LinearRegression():
         self.weights = self.weights - self.learning_rate*(grad_b1)
 
 
-    def accuracy(true_values, predictions):
-        return np.mean(true_values == predictions)
+    def accuracy(self,true_values, predictions):
+        # Better: R² score for regression
+        ss_res = np.sum((true_values - predictions)**2)
+        ss_tot = np.sum((true_values - np.mean(true_values))**2)
+        return 1 - (ss_res / ss_tot)
 
         
     def fit(self, X, y):
