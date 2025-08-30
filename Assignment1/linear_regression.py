@@ -9,6 +9,8 @@ class LinearRegression():
         self.epochs = epochs
         self.weights, self.bias = None, None
         self.losses, self.train_accuracies = [], []
+
+
     def _function(self, x):
         return x
 
@@ -17,10 +19,14 @@ class LinearRegression():
 
 
     def compute_gradients(self, x, y, y_pred):
+        _grad_b0 = 1/len(y) * np.sum(y_pred-y)
+        _grad_b1 = 1/len(y) * np.sum(x*(y_pred-y))
+        return _grad_b1, _grad_b0
 
 
-
-    def update_parameters(self, grad_w, grad_b):
+    def update_parameters(self, grad_b0, grad_b1):
+        self.bias = grad_b0 - self.learning_rate*(grad_b0)
+        self.weights = grad_b1 - self.learning_rate*(grad_b1)
 
 
     def accuracy(true_values, predictions):
@@ -49,7 +55,7 @@ class LinearRegression():
             self.update_parameters(grad_b1, grad_b0)
             loss = self._compute_loss(y, y_pred)
             pred_to_class = [1 if _y > 0.5 else 0 for _y in y_pred]
-            self.train_accuracies.append(accuracy(y, pred_to_class))
+            self.train_accuracies.append(self.accuracy(y, pred_to_class))
             self.losses.append(loss)
 
     def predict(self, X):
