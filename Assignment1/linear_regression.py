@@ -2,10 +2,24 @@ import numpy as np
 
 class LinearRegression():
     
-    def __init__(self):
-        # NOTE: Feel free to add any hyperparameters
+    def __init__(self, learning_rate=0.1, epochs =1000):
+        # NOTE: Feel free to add any hyperparameters 
         # (with defaults) as you see fit
-        pass
+        self.learning_rate= learning_rate
+        self.epochs = epochs
+        self.weights, self.bias = None, None
+        self.losses, self.train_accuracies = [], []
+    def sigmoid_function(self, x):
+
+    def _compute_loss(self, y, y_pred):
+
+    def compute_gradients(self, x, y, y_pred):
+
+    def update_parameters(self, grad_w, grad_b):
+
+    def accuracy(true_values, predictions):
+        return np.mean(true_values == predictions)
+
         
     def fit(self, X, y):
         """
