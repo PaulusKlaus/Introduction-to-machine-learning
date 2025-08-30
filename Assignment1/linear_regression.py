@@ -54,8 +54,8 @@ class LinearRegression():
             grad_b1, grad_b0 = self.compute_gradients(X, y, y_pred)
             self.update_parameters(grad_b1, grad_b0)
             loss = self._compute_loss(y, y_pred)
-            pred_to_class = [1 if _y > 0.5 else 0 for _y in y_pred]
-            self.train_accuracies.append(self.accuracy(y, pred_to_class))
+            #pred_to_class = [1 if _y > 0.5 else 0 for _y in y_pred]
+            self.train_accuracies.append(self.accuracy(y, y_pred))
             self.losses.append(loss)
 
     def predict(self, X):
