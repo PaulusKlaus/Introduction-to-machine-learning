@@ -25,8 +25,8 @@ class LinearRegression():
 
 
     def update_parameters(self, grad_b0, grad_b1):
-        self.bias = grad_b0 - self.learning_rate*(grad_b0)
-        self.weights = grad_b1 - self.learning_rate*(grad_b1)
+        self.bias = self.bias - self.learning_rate*(grad_b0)
+        self.weights = self.weights - self.learning_rate*(grad_b1)
 
 
     def accuracy(true_values, predictions):
