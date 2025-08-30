@@ -9,11 +9,16 @@ class LinearRegression():
         self.epochs = epochs
         self.weights, self.bias = None, None
         self.losses, self.train_accuracies = [], []
-    def sigmoid_function(self, x):
+    def function(self, x):
+        return np.matmul(self.weights, x.transpose()) + self.bias
 
     def _compute_loss(self, y, y_pred):
+        return 1/(2*len(y))*sum((y-y_pred)**2)
+
 
     def compute_gradients(self, x, y, y_pred):
+
+
 
     def update_parameters(self, grad_w, grad_b):
 
@@ -39,8 +44,8 @@ class LinearRegression():
         for _ in range(self.epochs):
             lin_model = np.matmul(self.weights, X.transpose()) + self.bias
             y_pred = self._sigmoid(lin_model)
-            grad_w, grad_b = self.compute_gradients(X, y, y_pred)
-            self.update_parameters(grad_w, grad_b)
+            grad_b1, grad_b0 = self.compute_gradients(X, y, y_pred)
+            self.update_parameters(grad_b1, grad_b0)
             loss = self._compute_loss(y, y_pred)
             pred_to_class = [1 if _y > 0.5 else 0 for _y in y_pred]
             self.train_accuracies.append(accuracy(y, pred_to_class))
