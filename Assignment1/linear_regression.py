@@ -9,8 +9,8 @@ class LinearRegression():
         self.epochs = epochs
         self.weights, self.bias = None, None
         self.losses, self.train_accuracies = [], []
-    def function(self, x):
-        return np.matmul(self.weights, x.transpose()) + self.bias
+    def _function(self, x):
+        return x
 
     def _compute_loss(self, y, y_pred):
         return 1/(2*len(y))*sum((y-y_pred)**2)
@@ -44,7 +44,7 @@ class LinearRegression():
         # Gradient Descent
         for _ in range(self.epochs):
             lin_model = np.matmul(self.weights, X.transpose()) + self.bias
-            y_pred = self._sigmoid(lin_model)
+            y_pred = self._function(lin_model)
             grad_b1, grad_b0 = self.compute_gradients(X, y, y_pred)
             self.update_parameters(grad_b1, grad_b0)
             loss = self._compute_loss(y, y_pred)
