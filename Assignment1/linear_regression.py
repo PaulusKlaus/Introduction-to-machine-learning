@@ -73,8 +73,8 @@ class LinearRegression():
         """
         # TODO: Implement
         lin_model = np.matmul(X, self.weights) + self.bias
-        y_pred = self._sigmoid(lin_model)
-        return [1 if _y > 0.5 else 0 for _y in y_pred]
+        y_pred = self._function(lin_model)
+        return y_pred
 
         #raise NotImplementedError("The predict method is not implemented yet.")
 
