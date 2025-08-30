@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class LinearRegression():
+class LogisticRegression():
 
     def __init__(self, learning_rate=0.001, epochs=10000):
         # NOTE: Feel free to add any hyperparameters
