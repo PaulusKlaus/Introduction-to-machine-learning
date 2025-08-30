@@ -12,7 +12,7 @@ class LogisticRegression():
         self.losses, self.train_accuracies = [], []
 
     def _function(self, x):
-        return 1/(1+np.e**(-sum(self.weights@x+self.bias)))
+        return 1/(1+np.e**(-sum(self.weights*x+self.bias)))
 
     def _compute_loss(self, y, y_pred):
         return 0.5 * np.mean((y - y_pred) ** 2)

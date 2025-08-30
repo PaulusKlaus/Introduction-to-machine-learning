@@ -88,7 +88,7 @@ class LinearRegression():
         Returns:
             A length m array of floats
         """
-        # TODO: Implement
+
         lin_model = X @ self.weights + self.bias
         y_pred = self._function(lin_model)
         return y_pred
