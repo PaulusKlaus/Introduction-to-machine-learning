@@ -3,13 +3,14 @@ import numpy as np
 
 class LogisticRegression():
 
-    def __init__(self, learning_rate=0.005, epochs=10000):
+    def __init__(self, learning_rate=0.001, epochs=1000,pred_to_class=0.5):
         # NOTE: Feel free to add any hyperparameters
         # (with defaults) as you see fit
         self.learning_rate = learning_rate
         self.epochs = epochs
         self.weights, self.bias = None, None
         self.losses, self.train_accuracies = [], []
+        self.pred_to_class = pred_to_class
 
     def sigmoid_function(self, z):
         return 1/(1+np.exp(-z))
@@ -69,8 +70,8 @@ class LogisticRegression():
             self.update_parameters(grad_w, grad_b)
 
             loss = self._compute_loss(y, y_pred)
-            pred_to_class = [1 if _y > 0.5 else 0 for _y in y_pred]
-            self.train_accuracies.append(self.accuracy(y, pred_to_class))
+            _pred_to_class = [1 if _y > self.pred_to_class else 0 for _y in y_pred]
+            self.train_accuracies.append(self.accuracy(y, _pred_to_class))
             self.losses.append(loss)
 
     def predict(self, X):
@@ -90,7 +91,7 @@ class LogisticRegression():
         lin_model = X @ self.weights + self.bias
         y_pred = self.sigmoid_function(lin_model)
 
-        return [1 if _y > 0.5 else 0 for _y in y_pred]
+        return [1 if _y > self.pred_to_class else 0 for _y in y_pred]
 
         # raise NotImplementedError("The predict method is not implemented yet.")
     def predict_proba(self, X):
