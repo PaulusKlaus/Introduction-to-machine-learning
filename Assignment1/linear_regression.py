@@ -2,7 +2,7 @@ import numpy as np
 
 class LinearRegression():
     
-    def __init__(self, learning_rate=0.001, epochs =10000):
+    def __init__(self, learning_rate=0.0001, epochs =10000):
         # NOTE: Feel free to add any hyperparameters 
         # (with defaults) as you see fit
         self.learning_rate= learning_rate
