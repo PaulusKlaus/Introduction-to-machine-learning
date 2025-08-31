@@ -3,7 +3,7 @@ import numpy as np
 
 class LogisticRegression():
 
-    def __init__(self, learning_rate=0.1, epochs=1000):
+    def __init__(self, learning_rate=0.05, epochs=30):
         # NOTE: Feel free to add any hyperparameters
         # (with defaults) as you see fit
         self.learning_rate = learning_rate
@@ -33,11 +33,12 @@ class LogisticRegression():
         self.weights = self.weights - self.learning_rate * (grad_w)
 
     def accuracy(self, true_values, predictions):
-        ss_res = np.sum((true_values - predictions) ** 2)
-        ss_tot = np.sum((true_values - np.mean(true_values)) ** 2)
-        if ss_tot == 0:
-            return 1.0 if ss_res == 0 else 0.0
-        return 1 - (ss_res / ss_tot)
+        # ss_res = np.sum((true_values - predictions) ** 2)
+        # ss_tot = np.sum((true_values - np.mean(true_values)) ** 2)
+        # if ss_tot == 0:
+        #     return 1.0 if ss_res == 0 else 0.0
+        # return 1 - (ss_res / ss_tot)
+        return np.mean(true_values == predictions)
 
     def fit(self, X, y):
         """
