@@ -3,7 +3,7 @@ import numpy as np
 
 class LogisticRegression():
 
-    def __init__(self, learning_rate=0.001, epochs=1000,pred_to_class=0.5):
+    def __init__(self, learning_rate=0.01, epochs=100000,pred_to_class=0.80):
         # NOTE: Feel free to add any hyperparameters
         # (with defaults) as you see fit
         self.learning_rate = learning_rate
