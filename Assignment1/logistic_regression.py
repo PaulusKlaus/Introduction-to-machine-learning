@@ -17,7 +17,7 @@ class LogisticRegression():
         #return 1/(1+np.e**(-sum(self.weights*x+self.bias)))
 
     def _compute_loss(self, y, y_pred):
-        eps = 1e-12
+        eps = 1e-15
         y_pred = np.clip(y_pred, eps, 1 - eps)
         return -(y * np.log(y_pred) + (1 - y) * np.log(1 - y_pred))
 
